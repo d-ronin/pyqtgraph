@@ -22,7 +22,7 @@ except ImportError:
 MERGE_SIZE_LIMIT = 100
 
 # Paths that are checked for style by flake and flake_diff
-FLAKE_CHECK_PATHS = ['pyqtgraph', 'examples', 'tools']
+FLAKE_CHECK_PATHS = ['dronin_pyqtgraph', 'examples', 'tools']
 
 # Flake style checks -- mandatory, recommended, optional
 # See: http://pep8.readthedocs.org/en/1.4.6/intro.html
@@ -393,7 +393,7 @@ def getVersionStrings(pkg):
     """
     
     ## Determine current version string from __init__.py
-    initVersion = getInitVersion(pkgroot='pyqtgraph')
+    initVersion = getInitVersion(pkgroot='dronin_pyqtgraph')
 
     ## If this is a git checkout, try to generate a more descriptive version string
     try:

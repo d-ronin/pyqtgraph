@@ -1,5 +1,11 @@
-[![Build Status](https://travis-ci.org/pyqtgraph/pyqtgraph.svg?branch=develop)](https://travis-ci.org/pyqtgraph/pyqtgraph)
-[![codecov.io](http://codecov.io/github/pyqtgraph/pyqtgraph/coverage.svg?branch=develop)](http://codecov.io/github/pyqtgraph/pyqtgraph?branch=develop)
+dRonin fork of PyQtGraph
+========================
+
+This is dRonin's fork of PyQtGraph.  dRonin's logviewer and python tools
+library uses current pyqtgraph, but there has not been a PyPi release in
+some time.
+
+This package installs into the dronin.pyqtgraph namespace to avoid conflicts.
 
 PyQtGraph
 =========

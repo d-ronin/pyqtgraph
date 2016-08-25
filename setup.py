@@ -1,4 +1,10 @@
 DESCRIPTION = """\
+This is dRonin's fork of PyQtGraph.  dRonin's logviewer and python tools
+library uses current pyqtgraph, but there has not been a PyPi release in
+some time.
+
+This package installs into the dronin.pyqtgraph namespace to avoid conflicts.
+
 PyQtGraph is a pure-python graphics and GUI library built on PyQt4/PySide and
 numpy. 
 
@@ -9,13 +15,13 @@ heavy leverage of numpy for number crunching, Qt's GraphicsView framework for
 """
 
 setupOpts = dict(
-    name='pyqtgraph',
-    description='Scientific Graphics and GUI Library for Python',
+    name='dronin-pyqtgraph',
+    description='dRonin fork of scientific Graphics and GUI Library for Python',
     long_description=DESCRIPTION,
     license='MIT',
     url='http://www.pyqtgraph.org',
-    author='Luke Campagnola',
-    author_email='luke.campagnola@gmail.com',
+    author='dRonin',
+    author_email='info@dronin.org',
     classifiers = [
         "Programming Language :: Python",
         "Programming Language :: Python :: 2",
@@ -45,18 +51,15 @@ except ImportError:
     from distutils.core import setup
     from distutils.command import install
 
-
 path = os.path.split(__file__)[0]
 sys.path.insert(0, os.path.join(path, 'tools'))
 import setupHelpers as helpers
 
 ## generate list of all sub-packages
-allPackages = (helpers.listAllPackages(pkgroot='pyqtgraph') + 
-               ['pyqtgraph.'+x for x in helpers.listAllPackages(pkgroot='examples')])
+allPackages = helpers.listAllPackages(pkgroot='dronin_pyqtgraph')
 
 ## Decide what version string to use in the build
-version, forcedVersion, gitVersion, initVersion = helpers.getVersionStrings(pkg='pyqtgraph')
-
+version, forcedVersion, gitVersion, initVersion = helpers.getVersionStrings(pkg='dronin_pyqtgraph')
 
 
 class Build(build.build):
@@ -81,7 +84,7 @@ class Build(build.build):
             return ret
         
         try:
-            initfile = os.path.join(buildPath, 'pyqtgraph', '__init__.py')
+            initfile = os.path.join(buildPath, 'dronin_pyqtgraph', '__init__.py')
             data = open(initfile, 'r').read()
             open(initfile, 'w').write(re.sub(r"__version__ = .*", "__version__ = '%s'" % version, data))
             buildVersion = version
@@ -122,10 +125,9 @@ setup(
               'mergetest': helpers.MergeTestCommand,
               'style': helpers.StyleCommand},
     packages=allPackages,
-    package_dir={'pyqtgraph.examples': 'examples'},  ## install examples along with the rest of the source
-    package_data={'pyqtgraph.examples': ['optics/*.gz', 'relativity/presets/*.cfg']},
     install_requires = [
-        'numpy',
+        #'PyQt5',
+        'numpy'
         ],
     **setupOpts
 )
